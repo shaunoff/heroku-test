@@ -17,6 +17,13 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+  plugins: [
+    {src: '~/plugins/lp_widgets.js', ssr: false }
+  ],
+  css: [{
+    src: 'lp-widgets/dist/lp-widgets.css',
+    lang: 'css'
+  }],
   /*
   ** Build configuration
   */
@@ -24,6 +31,11 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
+    vendor: [
+      'axios',
+      'lp-widgets',
+      'lodash',
+    ],
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -36,4 +48,3 @@ module.exports = {
     }
   }
 }
-
